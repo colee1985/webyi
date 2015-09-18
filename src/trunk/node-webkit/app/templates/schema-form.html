@@ -1,0 +1,58 @@
+<div ng-controller="SchemaCtrl" class="schema-main">
+	<form ng-submit="save()" method="post" accept-charset="utf-8" on-ctrl-s="save()">
+		<div class="form-main no-code">
+			<p>模型名称：<input type="text" ng-model="schema.model_name" /> 表名称：<input type="text" ng-model="schema.table_name" /></p>
+			<table class="table table-bordered" width="100%">
+				<thead>
+					<tr>
+						<th width="100">字段名</th>
+						<th width="100">字段类型</th>
+						<th width="100">可用SCHEMA</th>
+						<th width="100">取值范围</th>
+						<th width="100">默认值</th>
+						<th width="100">描述</th>
+						<th width="20">操作</th>
+					</tr>
+				</thead>
+				<tr ng-repeat="field in schema.fields">
+					<td><input class="td-input" type="text" ng-model="field.name" /></td>
+					<td>
+						<select class="td-input" ng-model="field.type" ng-options="type for type in field_types"></select>
+					</td>
+					<td>
+						<select class="td-input" ng-model="field.sub_schema" ng-options="sub_schema for sub_schema in schemas"></select>
+					</td>
+					<td>
+						<div ng-click="field.enums_shown=true">&nbsp;
+							[<span ng-repeat="_enum in field.enums">{{_enum.value}},</span>]
+						</div>
+						<div ng-show="field.enums_shown" class="modal">
+							<div class="modal-header">
+								<a class="close" ng-click="field.enums_shown=false">×</a>
+								<h3 class="modal-title">取值范围</h3>
+							</div>
+							<div class="modal-body">
+								<div>不填默认为任意值</div>
+								<ul>
+									<li ng-repeat="enum in field.enums">
+										<input type="text" ng-model="enum.value" />
+										<a class="btn" ng-click="delEnum(field, $index)">-</a>
+									</li>
+									<li><a class="btn" ng-click="addEnum(field)">+增加</a></li>
+								</ul>
+							</div>
+							<div class="modal-footer">
+								<a ng-click="field.enums_shown=false" class="btn btn-primary">确定</a>
+							</div>
+						</div>
+					</td>
+					<td><input class="td-input" type="text" ng-model="field.default" /></td>
+					<td><input class="td-input" type="text" ng-model="field.intro" /></td>
+					<td><a class="btn" title="删除" ng-click="delField($index)">-</a></td>
+				</tr>
+			</table>
+			<a class="btn" ng-click="addField()">+增加字段</a>
+			<input class="btn btn-primary" type="submit" value="保存" />
+		</div>
+	</form>
+</div>

@@ -1,0 +1,58 @@
+/**
+ * {{doc.modelName}} Router
+ */
+var parse = require('co-body');
+
+/**
+ * {{doc.modelName}} listing.
+ */
+module.exports.admin = function *() {
+	var query = this.query||{};
+	var page = Number(query.page||1);
+	query.limit = query.pagesize||15;
+	query.offset = (page-1)*query.limit;
+	query.order = query.order||'id DESC';
+	var models = yield sequelize.models.{{doc.modelName}}.findAndCount(query);
+	this.body = models;
+};
+
+
+/**
+ * Detail {{doc.modelName}} :id.
+ */
+module.exports.detail = function *() {
+	var model = yield sequelize.models.{{doc.modelName}}.findOne({
+		where: this.query
+	});
+	if (!model) this.throw(404, 'invalid {{doc.modelName}} id');
+	this.body = model;
+};
+
+/**
+ * Create a {{doc.modelName}}.
+ */
+module.exports.create = function *() {
+	var model = yield parse(this);
+	this.body = yield sequelize.models.{{doc.modelName}}.create(model);
+};
+
+/**
+ * Update {{doc.modelName}}
+ */
+module.exports.update = function *() {
+	var model = yield parse(this);
+	var options = {
+		where: {
+			id: model.id
+		}
+	};
+	delete model.id;
+	this.body = yield sequelize.models.{{doc.modelName}}.update(model, options);
+};
+
+/**
+ * Remove {{doc.modelName}}
+ */
+module.exports.remove = function *() {
+	this.body = yield sequelize.models.{{doc.modelName}}.remove({_id:this.query.id});
+};

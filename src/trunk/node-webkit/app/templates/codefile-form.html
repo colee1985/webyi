@@ -1,0 +1,32 @@
+<div ng-controller="CodeFileCtrl" class="codefile-main">
+	<form ng-submit="save()" method="post" accept-charset="utf-8" on-ctrl-s="save()">
+		<ul class="form-header" ng-init="show_tab=2">
+			<li ng-click="show_tab=1" ng-class="{active: show_tab==1}">需求配置</li>
+			<li ng-click="show_tab=2" ng-class="{active: show_tab==2}">实现代码</li>
+			<li>
+				<span>代码类型:</span>
+				<select class="td-input" ng-model="model.code_type" ng-options="code_type for code_type in code_types"></select>
+			</li>
+		</ul>
+		<div class="form-main no-code" ng-if="show_tab==1">
+			<div>
+				<textarea ng-model="model.intro" placeholder="文件说明"></textarea>
+			</div>
+			<div>
+				<input type="text" ng-model="model.name" placeholder="文件名称" />
+			</div>
+		</div>
+		<div class='form-main' ng-if="show_tab==2">
+			<div ui-ace="{
+				useWrapMode : true,
+				showGutter: true,
+				theme:'monokai',
+				mode: model.code_type,
+				onLoad: aceLoaded
+			}" ng-model="model.code" placeholder="代码"></div>
+		</div>
+		<div class="form-footer">
+			<input class="btn btn-primary" type="submit" value="保存" />
+		</div>
+	</form>
+</div>

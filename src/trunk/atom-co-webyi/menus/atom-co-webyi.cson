@@ -1,0 +1,17 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  '.overlayer':
+      'Enable atom-co-webyi': 'atom-co-webyi:toggle'
+
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'atom-co-webyi'
+      'submenu': [
+        { 'label': 'Toggle', 'command': 'atom-co-webyi:toggle' },
+        { 'label': 'Convert', 'command': 'atom-co-webyi:convert' }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,272 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: '微软雅黑', sans-serif, Arial;
+  font-size: 14px;
+  background: #272822;
+  color: #b4b4b4;
+}
+#appContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+#sidebarBox {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  bottom: 0;
+  width: 310px;
+  background: #202020;
+  overflow: auto;
+  padding-right: 10px;
+}
+#containerBox {
+  position: absolute;
+  top: 30px;
+  left: 321px;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+}
+.form-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 29px;
+  border-bottom: 1px solid #333;
+  background: #222;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.form-header li {
+  float: left;
+  padding: 0 20px;
+  border-right: 1px solid #333;
+  line-height: 29px;
+  height: 35px;
+  overflow: hidden;
+  cursor: pointer;
+  list-style: none;
+}
+.form-header .active {
+  background: #121212;
+}
+.form-main {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  bottom: 35px;
+  left: 0;
+  overflow: auto;
+}
+.form-main.no-code {
+  background: #fff;
+  color: #333;
+  padding: 20px;
+}
+.form-footer {
+  position: absolute;
+  height: 15px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #333;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.CodeMirror {
+  height: 100%;
+}
+.ace_editor {
+  height: 100%;
+}
+
+.console-pannel-drag-top {
+  background: #2b2b2b;
+  text-align: center;
+  height: 5px;
+  line-height: 5px;
+  font-size: 2px;
+  cursor: n-resize;
+  padding: 0;
+}
+.console-pannel-main {
+  height: 0;
+}
+.console-pannel-content {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1.8;
+  background: #222;
+  color: #fff;
+  z-index: 998;
+  overflow-y: auto;
+  border-top: 2px solid #666;
+}
+.console-pannel-content li {
+  padding: 10px 0;
+  line-height: 25px;
+}
+.console-pannel-close-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  z-index: 999;
+  text-align: right;
+}
+
+#navbarContainer {
+  height: 40px;
+  position: relative;
+  z-index: 10;
+}
+#navbarContainer .container {
+  width: 100%;
+}
+#navbarContainer a {
+  cursor: pointer;
+}
+
+#debugContainer {
+  position: fixed;
+  z-index: 99999999999;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+}
+#debugContainer label {
+  display: inline;
+}
+#debugContainer #wmcDebugBody {
+  position: absolute;
+  width: 300px;
+  height: 350px;
+  bottom: 0;
+  right: 0;
+}
+#debugContainer #wmcDebugBody .debug-main {
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 10px;
+}
+#debugContainer #wmcDebugBody .background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background: #fff;
+  opacity: 0.9;
+}
+
+#webYiHeader {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 29px;
+  background: #000;
+  line-height: 29px;
+  border-bottom: 1px solid #383838;
+}
+#webYiLogo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100%;
+}
+#webYitopNav {
+  position: absolute;
+  top: 0;
+  left: 60px;
+}
+#webYitopNav li {
+  display: inline-block;
+  padding: 0 10px;
+}
+#webYitopNav .active {
+  background: #222;
+}
+.main-header-nav a,
+.main-header-nav a:hover,
+.main-header-nav a:link {
+  color: #b4b4b4;
+}
+
+.plan-status-btn-group {
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+/* Fix for IE7 */
+  *display: inline;
+/* Fix for IE7 */
+}
+.plan-status-btn-group span {
+  height: 10px;
+  width: 10px;
+  display: inline-block;
+  font-size: 0;
+  opacity: 0.1;
+  cursor: pointer;
+}
+.plan-status-btn-group .active {
+  opacity: 1;
+}
+
+.schema-main table td {
+  padding: 0;
+  overflow: hidden;
+}
+.schema-main table .td-input {
+  width: 100%;
+  border-radius: 0;
+  border: 0;
+  margin: 0;
+}
+
+.sidebar-add-btn {
+  float: right;
+}
+.sidebar-item-li {
+  position: relative;
+  overflow: hidden;
+  clear: both;
+  white-space: nowrap;
+}
+.sidebar-item-li a,
+.sidebar-item-li a:hover,
+.sidebar-item-li a:link {
+  color: #b4b49c;
+  text-decoration: none;
+}
+.sidebar-item-title {
+  color: #121212;
+}
+.project-sidebar-li-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.project-sidebar-title {
+  color: #b4b49c;
+}
+.project-sidebar-dir {
+  color: #222;
+  font-size: 10px;
+}
+.sideber-manage-btn {
+  border-bottom: 1px solid #383838;
+  padding: 5px 0;
+}

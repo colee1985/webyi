@@ -1,0 +1,16 @@
+Q = require 'q'
+_  = require 'underscore'
+_.str = require 'underscore.string'
+log4js = require 'log4js'
+validator = require 'validator'
+
+module.exports = (app)->
+
+{% for requrl in requrls %}
+	# {{requrl.title}} {{requrl.intro}}
+	app.{{requrl.type|requrlType}} '/{{requrl.path}}', (req, res)->
+		{{requrl.code|raw|formatCode(2)}}
+	
+{% endfor %}
+	return (req, res, next)->
+		next()

@@ -1,0 +1,5 @@
+<div class="plan-status-btn-group">
+	<span ng-class="{active:status=='inprogress'}" style="background:#ff6600" title="进行中" ng-click="setStatus('inprogress')">.</span>
+	<span ng-class="{active:status=='complete'}" style="background:green" title="完成" ng-click="setStatus('complete')">.</span>
+	<span ng-class="{active:status=='problem'}" style="background:red" title="有问题" ng-click="setStatus('problem')">.</span>
+</div>

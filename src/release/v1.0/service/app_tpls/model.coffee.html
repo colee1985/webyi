@@ -1,0 +1,7 @@
+mongoose = require "../utils/mongoose"
+model = require '../schemas/{{doc.model_name}}'
+try
+	mongoose.model '{{doc.table_name}}', model
+catch e
+	# ...
+module.exports = mongoose.model '{{doc.table_name}}'

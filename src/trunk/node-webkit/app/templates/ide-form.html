@@ -1,0 +1,19 @@
+<div ng-controller="IdeCtrl" class="ide-main">
+	<form ng-submit="save()" method="post" accept-charset="utf-8" on-ctrl-s="FileModel.save()">
+		<ul class="form-header">
+			<li ng-repeat="item in FileModel.selects" ng-click="activeTab(item)" ng-class="{active: FileModel.active_tab==item.path}">{{item.name}} <span class="icon-remove" ng-click="FileModel.removeSelect($index)"></span></li>
+		</ul>
+		<div class='form-main'>
+			<div ui-ace="{
+				useWrapMode : true,
+				showGutter: true,
+				theme:'monokai',
+				mode: FileModel.active_item.code_type,
+				onLoad: aceLoaded
+			}" ng-model="FileModel.active_item.code" placeholder="代码"></div>
+		</div>
+		<div class="form-footer">
+			<input class="btn btn-primary" type="submit" value="保存" />
+		</div>
+	</form>
+</div>

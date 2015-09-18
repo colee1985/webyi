@@ -1,0 +1,34 @@
+<div ng-controller="SiteIndexCtrl" style="height: {{WindowInfo.height}}px">
+	<div console-panel name="message"></div>
+	<div id="ButtonBox" style="height:100%; overflow: auto;">
+		<button ng-click="joinAppAndStart()" class="btn">
+			加入并启动项目D:/coleeFlie/htdocs/Co-sumaitong/src/trunk5/
+		</button>
+		<ul>
+			<li>当前正在运行的项目:</li>
+			<li ng-repeat="item in running_list">
+				<a href="http://127.0.0.1:1081" target="_blank">{{item}} </a>
+			</li>
+		</ul>
+		<h3>测试用例</h3>
+		<ul class="siteindex-test-ul" ng-init="cur={active:null}">
+			<li>
+				<button ng-click="stopAllTest();cur.active=null" type="button">停止所有</button>
+			</li>
+			<li ng-repeat="item in test_list">
+				<span ng-class="{active:cur.active==(item.name)}">{{item.name}}</span>
+				<a ng-click="runTest({file: item.name});cur.active=(item.name)">启动测试</a>
+				<ul>
+					<li ng-repeat="it in item.list">
+						<span ng-class="{active:cur.active==(item.name+it)}">{{it}}</span>
+						<a ng-click="runTest({file: item.name, grep: it});cur.active=(item.name+it)">启动测试</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<button ng-click="createSchemas()" class="btn" type="button">createSchemas</button>
+		<button ng-click="createModels()" class="btn" type="button">createModels</button>
+		<button ng-click="createRouters()" class="btn" type="button">createRouters</button>
+		<button ng-click="createModelTests()" class="btn" type="button">createModelTests</button>
+	</div>
+</div>

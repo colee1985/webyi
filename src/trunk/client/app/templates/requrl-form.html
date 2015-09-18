@@ -1,0 +1,76 @@
+<div ng-controller="RequrlCtrl">
+	<form ng-submit="save()" on-ctrl-s="save()">
+		<ul class="form-header" ng-init="show_tab=2">
+			<li ng-click="show_tab=1" ng-class="{active: show_tab==1}">需求配置</li>
+			<li ng-click="show_tab=2" ng-class="{active: show_tab==2}">实现代码</li>
+			<li ng-click="show_tab=3" ng-class="{active: show_tab==3}">测试代码</li>
+		</ul>
+		<div class="form-main no-code" ng-if="show_tab==1">
+			<div>
+				<input ng-model="model.title" type="text" placeholder="接口名称" />
+				<input ng-model="model.path" type="text" placeholder="接口地址" />
+				<select ng-model="model.type" ng-options="type for type in requrl.request_types"></select>
+				<div>
+					<textarea ng-model="model.intro" style="width:90%" rows="3" placeholder="接口描述"></textarea>
+				</div>
+			</div>
+
+			<h4>HEADER参数</h4>
+			<ul>
+				<li ng-repeat="header in model.headers">
+					<input ng-model="header.name" type="text" placeholder="参数名称" />
+					<input ng-model="header.value" type="text" placeholder="参数值" />
+					<select ng-model="header.value_type" ng-options="value_type for value_type in requrl.value_types"></select>
+					<input ng-model="header.intro" type="text" placeholder="参数描述" />
+					<a class="btn" ng-click="delParame('headers', $index)">-</a>
+				</li>
+				<li><a class="btn" ng-click="addParame('headers')">+增加</a></li>
+			</ul>
+
+			<h4>GET参数</h4>
+			<ul>
+				<li ng-repeat="get in model.gets">
+					<input ng-model="get.name" type="text" placeholder="参数名称" />
+					<input ng-model="get.value" type="text" placeholder="参数值" />
+					<select ng-model="get.value_type" ng-options="value_type for value_type in requrl.value_types"></select>
+					<input ng-model="get.intro" type="text" placeholder="参数描述" />
+					<a class="btn" ng-click="delParame('gets', $index)">-</a>
+				</li>
+				<li><a class="btn" ng-click="addParame('gets')">+增加</a></li>
+			</ul>
+
+			<h4>POST参数</h4>
+			<ul>
+				<li ng-repeat="post in model.posts">
+					<input ng-model="post.name" type="text" placeholder="参数名称" />
+					<input ng-model="post.value" type="text" placeholder="参数值" />
+					<select ng-model="post.value_type" ng-options="value_type for value_type in requrl.value_types"></select>
+					<input ng-model="post.intro" type="text" placeholder="参数描述" />
+					<a class="btn" ng-click="delParame('posts', $index)">-</a>
+				</li>
+				<li><a class="btn" ng-click="addParame('posts')">+增加</a></li>
+			</ul>
+		</div>
+		<div class='form-main' ng-if="show_tab==2">
+			<div ui-ace="{
+				useWrapMode : true,
+				showGutter: true,
+				theme:'monokai',
+				mode: 'coffee',
+				onLoad: aceLoaded
+			}" ng-model="model.code" placeholder="实现代码"></div>
+		</div>
+		<div class='form-main' ng-if="show_tab==3">
+			<div ui-ace="{
+				useWrapMode : true,
+				showGutter: true,
+				theme:'monokai',
+				mode: 'coffee',
+				onLoad: aceLoaded
+			}" ng-model="model.test_code" placeholder="测试代码"></div>
+		</div>
+		<div class="form-footer">
+			<input class="btn btn-primary" type="submit" value="保存" />
+		</div>
+	</form>
+</div>

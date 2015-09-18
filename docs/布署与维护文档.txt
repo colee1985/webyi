@@ -1,0 +1,26 @@
+使用forever来管理启动与关闭:
+
+	npm install forever -g   #安装
+	forever start app.js          #启动
+	forever stop app.js           #关闭
+	forever start -l forever.log -o out.log -e err.log app.js   #输出日志和错误
+
+操作步骤：
+上传 ./src/service/build
+上传 ./src/service/node_modules
+上传 ./src/wwwroot
+修改 ./src/wwwroot/index.html 的app.js为app.min.js
+删除 ./src/wwwroot/app.js
+cd ./src/service/build
+forever stop main.js
+forever start -l ../../logs/forever.log -o ../../logs/out.log -e ../../logs/err.log main.js
+
+
+
+
+可选操作-NPM代理管理：
+	npm config set proxy http://66.35.162.179:3128
+	npm config set https-proxy http://66.35.162.179:3128
+	搞到以后，删除代理设置：  
+	#npm config delete proxy  
+	#npm config delete https-proxy  

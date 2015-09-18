@@ -1,0 +1,16 @@
+module.exports = do ->
+	debug: {{doc.is_debug|configIsDebug}}
+	server_port: {{doc.server_port}}
+	monogo: 'mongodb://{{doc.db_username}}:{{doc.db_password}}@{{doc.db_host}}:{{doc.db_port}}/'
+	db_name: '{{doc.db_name}}'
+	logs: 
+		appenders: [
+			type: "console"
+		# ,
+		# 	type: "file"
+		# 	filename: "logs/cheese.log"
+		# 	category: "cheese"
+		]
+		# replaceConsole: true
+		level: 'all' # level: all | trace | debug | info | warn | error | fatal
+	{{doc.other_conf|raw|formatCode(1)}}

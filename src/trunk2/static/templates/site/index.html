@@ -1,0 +1,31 @@
+<div ng-controller="SiteIndexCtrl" style="height: {{WindowInfo.height}}px">
+	<div console-panel></div>
+	<div id="ButtonBox" style="width:35%; float:left">
+		<button ng-click="joinAppAndStart()" class="btn">
+			加入并启动项目D:/coleeFlie/htdocs/Co-sumaitong/src/trunk5/
+		</button>
+		<ul>
+			<li>当前正在运行的项目:</li>
+			<li ng-repeat="item in running_list">
+				<a href="http://127.0.0.1:1081" target="_blank">{{item}} </a>
+			</li>
+		</ul>
+		<h3>测试用例</h3>
+		<ul>
+			<li ng-repeat="item in test_list">
+				{{item.name}}
+				<a ng-click="runTest({file: item.name})">启动测试</a>
+				<ul>
+					<li ng-repeat="it in item.list">
+						{{it}}
+						<a ng-click="runTest({file: item.name, grep: it})">启动测试</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<button ng-click="createSchemas()" class="btn" type="button">createSchemas</button>
+		<button ng-click="createModels()" class="btn" type="button">createModels</button>
+		<button ng-click="createRouters()" class="btn" type="button">createRouters</button>
+		<button ng-click="createModelTests()" class="btn" type="button">createModelTests</button>
+	</div>
+</div>
