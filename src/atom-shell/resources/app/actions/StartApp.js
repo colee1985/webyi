@@ -17,11 +17,12 @@ exports.run = function (path, progressCallback) {
 	// }
 	var command = __dirname+'/../node_modules/gulp/bin/gulp.js';
 	// 运行参数
+
 	var run_params = [command, '--color'];
 	service  = spawn('node', run_params, {
-		cwd: path+'../'
+		cwd: path+'./../'
 	});
-
+	progressCallback(run_params);
 	service.stdout.setEncoding('utf8');
 	// 捕获标准输出并将其打印到控制台
 	service.stdout.on('data', function (data) {
@@ -32,7 +33,8 @@ exports.run = function (path, progressCallback) {
 		progressCallback(data.toString());
 	});
 	service.on('error', function(err){
-		progressCallback(err);
+		progressCallback(err.stack);
+		// progressCallback(err);
 	});
 	// 注册子进程关闭事件
 	service.on('exit', function (code, signal) {

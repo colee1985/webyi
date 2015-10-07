@@ -47,10 +47,10 @@ label{
 	margin: 0;
 	height:98%;
 }
+.siteindex-test-ul .active {
+	color: #fff;
+}
 .schema-main {
 	background: #fff;
 	min-height: 500px;
-}
-.siteindex-test-ul .active {
-	color: #fff;
 }

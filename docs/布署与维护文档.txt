@@ -19,8 +19,8 @@ forever start -l ../../logs/forever.log -o ../../logs/out.log -e ../../logs/err.
 
 
 可选操作-NPM代理管理：
-	npm config set proxy http://66.35.162.179:3128
-	npm config set https-proxy http://66.35.162.179:3128
+	npm config set proxy http://133.130.100.136:3128
+	npm config set https-proxy http://133.130.100.136:3128
 	搞到以后，删除代理设置：  
 	#npm config delete proxy  
 	#npm config delete https-proxy  
