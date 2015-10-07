@@ -1,15 +1,13 @@
 <div ng-controller="SiteIndexCtrl" style="height: {{WindowInfo.height}}px">
 	<div console-panel name="message"></div>
 	<div id="ButtonBox" style="height:100%; overflow: auto;">
-		<button ng-click="joinAppAndStart()" class="btn">
-			加入并启动项目{{project_path}}
+		<div><input type="text" ng-model="project_path" style="width:90%;" class=""/></div>
+		<button ng-click="getTestTree()" class="btn">
+			测试列表
 		</button>
-		<ul>
-			<li>当前正在运行的项目:</li>
-			<li ng-repeat="item in running_list">
-				<a href="http://127.0.0.1:1081" target="_blank">{{item}} </a>
-			</li>
-		</ul>
+		<button ng-click="joinAppAndStart()" class="btn">
+			加入并启动项目
+		</button>
 		<h3>测试用例</h3>
 		<ul class="siteindex-test-ul" ng-init="cur={active:null}">
 			<li>
