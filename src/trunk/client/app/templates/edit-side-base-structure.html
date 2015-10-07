@@ -1,6 +1,0 @@
-<div>
-	<div ng-dblclick="edit(item)" ng-click="getChilds(item)">{{item.name}}</div>
-	<ul ng-if="item.type=='folder'" ng-show="item.childs">
-		<li ng-repeat="item in item.childs|orderBy: '-type'" ng-include="'templates/edit-side-base-structure.html'"></li>
-	</ul>
-</div>
