@@ -52,6 +52,11 @@ exports.run = function (path, params, progressCallback) {
 		// timeout: 2000,
 		// maxBuffer: 200*1024,
 		killSignal: 'SIGKILL',
+		env: {
+			"PORT": 9090,
+			"NODE_ENV": "dev",//production
+			"NODE_OPTIONS": "--debug=47977",
+		}
 	});
 	services[service.pid] = service;
 	service.stdout.setEncoding('utf8');

@@ -40,6 +40,10 @@ exports.run = function (path, progressCallback) {
 	service.on('exit', function (code, signal) {
 		progressCallback('子进程已退出，代码：'+code);
 	});
+	service.on('disconnect', function(err){
+		service.kill('SIGTERM');
+		// progressCallback(err);
+	});
 	services[path] = service;
 
 	// var gulp = require("gulp");
