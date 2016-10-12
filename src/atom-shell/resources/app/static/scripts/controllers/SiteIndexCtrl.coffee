@@ -1,7 +1,7 @@
 
 app.controller 'SiteIndexCtrl', ($scope, $element, WindowInfo)->
 
-	$scope.project_path = 'D:/htdocs/colee-waimao/src/trunk5'
+	$scope.project_path = 'D:/htdocs/colee-waimao/src/trunk'
 	$scope.joinAppAndStart = ->
 		StartApp.run $scope.project_path, (data)->
 			$scope.$broadcast 'console:message', data
